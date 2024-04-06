@@ -38,6 +38,5 @@ jobs:
           target-server: 149.28.237.69
           remote-user: root
           private-ssh-key: ${{ secrets.SSH_KEY }}
-          protocol: ftps
           source-path: ./docs/.vitepress/dist/
           destination-path: ~/docker/www/test.sjhp.club/
