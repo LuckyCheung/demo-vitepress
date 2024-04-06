@@ -35,7 +35,7 @@ jobs:
       - name: SyncFiles
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: sjhp.club
+          server: 149.28.237.69
           username: root
           password: ${{ secrets.password }}
           protocol: ftps
