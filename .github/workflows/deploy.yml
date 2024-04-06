@@ -22,5 +22,15 @@ jobs:
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.MY_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: docs/.vitepress/dist
+
+      - name: SyncFiles
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: sjhp.club
+          username: root
+          password: ${{ secrets.password }}
+          protocol: ftps
+          local-dir: ./docs/.vitepress/dist/
+          server-dir: /docker/www/www.sjhp.club/
