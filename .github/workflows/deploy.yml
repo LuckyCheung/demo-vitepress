@@ -17,14 +17,14 @@ jobs:
       - name: Install Node
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 16
 
       - name: Install Dependencies
         run: npm i
 
       - name: Build
         run: |
-          npm docs:build
+          npm run docs:build
 
       - name: Deploy Github
         uses: peaceiris/actions-gh-pages@v3
