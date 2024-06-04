@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - master
+    tags: # 当我们提交代码为tag 是以'v'开头的时候才会触发自动部署到服务端 如 git push tag v0.1.0
+      - "v*"
 
 jobs:
   deploy:
@@ -35,8 +37,8 @@ jobs:
       - name: SyncFiles
         uses: SamKirkland/web-deploy@v1
         with:
-          target-server: 149.28.237.69
+          target-server: sjhp.club
           remote-user: root
-          private-ssh-key: ${{ secrets.SSH_KEY }}
-          source-path: ./docs/.vitepress/dist/
-          destination-path: /docker/www/test.sjhp.club/
+          private-ssh-key: ${{ secrets.SSH }}
+          source-path: docs/.vitepress/dist
+          destination-path: /docker/nginx-proxy-manager/www/www.sjhp.club
