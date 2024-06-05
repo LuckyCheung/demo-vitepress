@@ -4,8 +4,8 @@ on:
   push:
     branches:
       - master
-    tags: # 当我们提交代码为tag 是以'v'开头的时候才会触发自动部署到服务端 如 git push tag v0.1.0
-      - "v*"
+    # tags: # 当我们提交代码为tag 是以'v'开头的时候才会触发自动部署到服务端 如 git push tag v0.1.0
+    #   - "v*"
 
 jobs:
   deploy:
@@ -29,16 +29,15 @@ jobs:
           npm run docs:build
 
       - name: Deploy Github
-        uses: peaceiris/actions-gh-pages@v3
+        uses: JamesIves/github-pages-deploy-action@v4.3.4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: docs/.vitepress/dist
+          folder: docs/.vitepress/dist
 
-      - name: SyncFiles
-        uses: SamKirkland/web-deploy@v1
-        with:
-          target-server: sjhp.club
-          remote-user: root
-          private-ssh-key: ${{ secrets.SSH }}
-          source-path: docs/.vitepress/dist
-          destination-path: /docker/nginx-proxy-manager/www/www.sjhp.club/
+      # - name: SyncFiles
+      #   uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      #   with:
+      #     target-server: www.sjhp.club
+      #     remote-user: root
+      #     private-ssh-key: ${{ secrets.SSH }}
+      #     source-path: docs/.vitepress/dist
+      #     destination-path: /docker/nginx-proxy-manager/www/www.sjhp.club/
