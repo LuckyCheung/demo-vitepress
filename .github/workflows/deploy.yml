@@ -7,6 +7,9 @@ on:
     # tags: # 当我们提交代码为tag 是以'v'开头的时候才会触发自动部署到服务端 如 git push tag v0.1.0
     #   - "v*"
 
+permissions:
+  contents: write
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -14,7 +17,7 @@ jobs:
       contents: write
     steps:
       - name: Checkout Branch
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Install Node
         uses: actions/setup-node@v3
@@ -29,7 +32,7 @@ jobs:
           npm run docs:build
 
       - name: Deploy Github
-        uses: JamesIves/github-pages-deploy-action@v4.3.4
+        uses: JamesIves/github-pages-deploy-action@v4.6.1
         with:
           folder: docs/.vitepress/dist
 
