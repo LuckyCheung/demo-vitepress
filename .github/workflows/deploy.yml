@@ -55,5 +55,4 @@ jobs:
           port: 22
           key: ${{ secrets.SSH }}
           source: docs/.vitepress/dist/*
-          target: ${{ secrets.DIR }}
-          rm: ${{ secrets.DIR }}
+          target: /docker/nginx-proxy-manager/www/www.sjhp.club/
