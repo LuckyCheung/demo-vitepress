@@ -53,7 +53,7 @@ jobs:
       # - name: SyncFiles
       #   uses: SamKirkland/FTP-Deploy-Action@v4.3.5
       #   with:
-      #     target-server: www.sjhp.club
+      #     target-server: ${{ secrets.HOST }}
       #     remote-user: root
       #     private-ssh-key: ${{ secrets.SSH }}
       #     source-path: docs/.vitepress/dist
