@@ -53,5 +53,5 @@ jobs:
           server: ${{ secrets.HOST }}
           username: root
           password: ${{ secrets.PASSWORD }}
-          local-dir: "docs/.vitepress/dist"
+          local-dir: "docs/.vitepress/dist/"
           server-dir: ${{ secrets.DIR }}
