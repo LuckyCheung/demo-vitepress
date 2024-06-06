@@ -43,8 +43,9 @@ jobs:
         run: npm run docs:build
 
       - name: Deploy Github
-        uses: JamesIves/github-pages-deploy-action@v4
+        uses: JamesIves/github-pages-deploy-action@v4.6.1
         with:
+          branch: master
           folder: docs/.vitepress/dist
 
       # - name: SyncFiles
