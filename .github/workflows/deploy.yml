@@ -43,15 +43,15 @@ jobs:
         run: npm run docs:build
 
       - name: Deploy Github
-        uses: JamesIves/github-pages-deploy-action@v4.6.1
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: docs/.vitepress/dist
 
-      # - name: SyncFiles
-      #   uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-      #   with:
-      #     target-server: ${{ secrets.HOST }}
-      #     remote-user: root
-      #     private-ssh-key: ${{ secrets.SSH }}
-      #     source-path: docs/.vitepress/dist
-      #     destination-path: /docker/nginx-proxy-manager/www/www.sjhp.club/
+      - name: 📂 Sync files
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.HOST }}
+          username: root
+          password: ${{ secrets.PASSWORD }}
+          local-dir: "docs/.vitepress/dist"
+          server-dir: ${{ secrets.DIR }}
