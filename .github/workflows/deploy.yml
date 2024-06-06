@@ -47,11 +47,13 @@ jobs:
         with:
           folder: docs/.vitepress/dist
 
-      - name: 📂 Sync files
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      - name: copy file via ssh key
+        uses: appleboy/scp-action@v0.1.7
         with:
-          server: ${{ secrets.HOST }}
+          host: ${{ secrets.HOST }}
           username: root
-          password: ${{ secrets.PASSWORD }}
-          local-dir: "docs/.vitepress/dist/"
-          server-dir: ${{ secrets.DIR }}
+          port: 22
+          key: ${{ secrets.SSH }}
+          source: docs/.vitepress/dist/*
+          target: ${{ secrets.DIR }}
+          rm: ${{ secrets.DIR }}
