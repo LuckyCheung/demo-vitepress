@@ -56,3 +56,4 @@ jobs:
           key: ${{ secrets.SSH }}
           source: docs/.vitepress/dist/*
           target: /docker/nginx-proxy-manager/www/www.sjhp.club/
+          strip_components: 3
